@@ -18,9 +18,13 @@ open class FSPagerViewCell: UICollectionViewCell {
         }
         let view = UIView(frame: .zero)
         view.isUserInteractionEnabled = false
-        view.backgroundColor = UIColor.black.withAlphaComponent(0.6)
+        //view.backgroundColor = UIColor.black.withAlphaComponent(0.6)
+        view.backgroundColor = UIColor.clear
+        
         
         let textLabel = UILabel(frame: .zero)
+        // Add to Center
+        //textLabel.center = self.contentView.center
         textLabel.textColor = .white
         textLabel.font = UIFont.preferredFont(forTextStyle: .body)
         self.contentView.addSubview(view)
@@ -48,7 +52,8 @@ open class FSPagerViewCell: UICollectionViewCell {
     fileprivate weak var _imageView: UIImageView?
     
     fileprivate let kvoContext = UnsafeMutableRawPointer(bitPattern: 0)
-    fileprivate let selectionColor = UIColor(white: 0.2, alpha: 0.2)
+    //fileprivate let selectionColor = UIColor(white: 0.2, alpha: 0.2)
+    fileprivate let selectionColor = UIColor.clear
     
     fileprivate weak var _selectedForegroundView: UIView?
     fileprivate var selectedForegroundView: UIView? {
@@ -119,6 +124,9 @@ open class FSPagerViewCell: UICollectionViewCell {
             imageView.frame = self.contentView.bounds
         }
         if let textLabel = _textLabel {
+            textLabel.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
+            textLabel.center = self.contentView.center
+            /*
             textLabel.superview!.frame = {
                 var rect = self.contentView.bounds
                 let height = textLabel.font.pointSize*1.5
@@ -133,6 +141,8 @@ open class FSPagerViewCell: UICollectionViewCell {
                 rect.origin.y += 1
                 return rect
             }()
+            */
+            
         }
         if let selectedForegroundView = _selectedForegroundView {
             selectedForegroundView.frame = self.contentView.bounds
